@@ -56,13 +56,11 @@
 import { ref } from "vue";
 const movies = ref([{ id: 0, name: "gh", year: "4545" }]);
 let nextId = 1;
-const newMovie = ref(
-  {
-    id: 0,
-    name: "",
-    year: "",
-  },
-);
+const newMovie = ref({
+  id: 0,
+  name: "",
+  year: "",
+});
 
 function addMovie() {
   if (!newMovie.value.name || !newMovie.value.year) return;
