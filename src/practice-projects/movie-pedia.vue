@@ -30,7 +30,7 @@
             Add movie
           </button>
         </form>
-
+        <button>jk</button>
         <!-- Movie List -->
         <p class="mt-20">Movie List</p>
         <h2 class="text-red-700 font-medium" v-if="movies.length === 0">
