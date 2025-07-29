@@ -29,13 +29,15 @@
           <button type="submit" class="bg-green-400 rounded-md">
             Add movie
           </button>
+
+          <span v-if="isMax" class="text-red-700">
+            You can only add 3 movies
+          </span>
         </form>
-        <button>jk</button>
+
         <!-- Movie List -->
         <p class="mt-20">Movie List</p>
-        <h2 class="text-red-700 font-medium" v-if="movies.length === 0">
-          No movies yet
-        </h2>
+        <h2 class="text-red-700 font-medium" v-if="isEmpty">No movies yet</h2>
         <ul>
           <li class="p-0.5" v-for="movie in movies" :key="movie.id">
             Title:{{ movie.name }} - Year: {{ movie.year }}
@@ -53,7 +55,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { computed, reactive, ref, watch } from "vue";
 const movies = ref([{ id: 0, name: "gh", year: "4545" }]);
 let nextId = 1;
 const newMovie = ref({
@@ -62,18 +64,20 @@ const newMovie = ref({
   year: "",
 });
 
+const isEmpty = computed(() => movies.value.length === 0);
+const isMax = computed(() => movies.value.length > 3);
+
 function addMovie() {
   if (!newMovie.value.name || !newMovie.value.year) return;
+  if (isMax.value) return;
   movies.value.push({
     id: nextId++,
     name: newMovie.value.name,
     year: newMovie.value.year,
   });
-
   newMovie.value.name = "";
   newMovie.value.year = "";
 }
-
 function deleteMovie(id) {
   movies.value = movies.value.filter((movie) => movie.id !== id);
 }
