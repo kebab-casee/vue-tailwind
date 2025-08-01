@@ -12,4 +12,7 @@ export default defineConfig({
       dts: "src/auto-imports.d.ts",
     }),
   ],
+  server: {
+    port: 3000,
+  },
 });
