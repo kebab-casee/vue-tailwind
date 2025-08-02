@@ -39,6 +39,11 @@
 
 <script setup>
 import logo from "../assets/img/logo.png";
+
+const isActive = true;
+
+
+
 </script>
 
 <style></style>
