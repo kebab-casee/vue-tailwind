@@ -2,7 +2,7 @@
   <Navbar />
   <Hero />
   <HomeCards />
-  <Joblistings/>
+  <Joblistings />
 </template>
 
 <script setup>
