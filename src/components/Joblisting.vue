@@ -7,16 +7,28 @@
       </div>
 
       <div class="mb-5">
-        {{ job.description }}
+        <div>
+          <span class="block mb-2">
+        {{ trunctedFullDescription }}
+          </span>
+          <button
+        @click="toggleFullDescription"
+        class="text-green-500 hover:text-green-600 cursor-pointer"
+          >
+        {{ showFullDescription ? 'Less' : 'More' }}
+          </button>
+        </div>
       </div>
 
-      <h3 class="text-green-500 mb-2">{{ job.salary }}</h3>
+      <div>
+        <h3 class="text-green-500 mb-2 display">{{ job.salary }}</h3>
+      </div>
 
       <div class="border border-gray-100 mb-5"></div>
 
       <div class="flex flex-col lg:flex-row justify-between mb-4">
         <div class="text-orange-700 mb-3">
-          <i class="fa-solid fa-location-dot text-lg"></i>
+          <i class="pi pi-map-marker text-lg"></i>
           {{ job.location }}
         </div>
         <a
@@ -31,8 +43,22 @@
 </template>
 
 <script setup>
-import { defineProps } from "vue";
-defineProps({
+
+const props = defineProps({
   job: Object,
 });
+
+const showFullDescription = ref(false)
+
+const toggleFullDescription = () =>{
+  showFullDescription.value = !showFullDescription.value
+}
+
+const trunctedFullDescription = computed(()=>{
+  let description = props.job.description;
+  if(!showFullDescription.value){
+    description = description.substring(0,100) + ' . . .';
+  }
+  return description
+})
 </script>
