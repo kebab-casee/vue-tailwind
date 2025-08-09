@@ -1,11 +1,7 @@
 <template>
-    <div>
-        <h1>
-            JobView
-        </h1>
-    </div>
+ <Joblistings/>
 </template>
 
 <script setup>
-
+import Joblistings from '../components/Joblistings.vue'
 </script>
