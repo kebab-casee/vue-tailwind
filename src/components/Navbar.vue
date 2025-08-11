@@ -39,8 +39,11 @@
 
 <script setup>
 import logo from "../assets/img/logo.png";
-import { RouterLink } from "vue-router";
-const isActive = true;
+import { RouterLink, useRoute } from "vue-router";
+
+const route = useRoute();
+
+const isActiceLink = (routePath) => route.path === routePath;
 </script>
 
 <style></style>
